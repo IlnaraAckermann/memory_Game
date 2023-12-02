@@ -29,30 +29,36 @@ for (let i = 0; i < cards.length; i++) {
 	box.onclick = handleClick;
 	document.querySelector(".game").appendChild(box);
 }
-
+/**
+ * Função responsável pela ações do click na carta, ela valida se a carta selecionada é valida e se as cartas são iguais
+ */
 function handleClick() {
-    console.log('click')
-    if(!this.classList.contains("boxMatch"))
-	if (openCards.length < 2) {
-		this.classList.add("boxOpen");
-		openCards.push(this);
+	//todo implementar audio!
+	if (!this.classList.contains("boxMatch")) {
+		if (!openCards.includes(this)) {
+			if (openCards.length < 2) {
+				this.classList.add("boxOpen");
+				openCards.push(this);
+			}
+			if (openCards.length === 2) {
+				setTimeout(checkMatch, 500);
+			}
+		}
 	}
-
-	if (openCards.length === 2) {
-		setTimeout(checkMatch, 500);
+}
+/**
+ * função responsável por verificar o match das cartas e adicionar a classe boxMatch
+ */
+function checkMatch() {
+	if (openCards[0].innerHTML === openCards[1].innerHTML) {
+		openCards[0].classList.add("boxMatch");
+		openCards[1].classList.add("boxMatch");
+	} else {
+		openCards[0].classList.remove("boxOpen");
+		openCards[1].classList.remove("boxOpen");
 	}
-
-	function checkMatch() {
-        if (openCards[0].innerHTML === openCards[1].innerHTML){
-            openCards[0].classList.add("boxMatch")
-            openCards[1].classList.add("boxMatch")
-        } else {
-            openCards[0].classList.remove("boxOpen")
-            openCards[1].classList.remove("boxOpen")
-        }
-        openCards=[];
-        if (document.querySelectorAll(".boxMatch").length === cards.length){
-            alert("Você Venceu!!!")
-        }
-    }
+	openCards = [];
+	if (document.querySelectorAll(".boxMatch").length === cards.length) {
+		alert("Você Venceu!!!");
+	}
 }

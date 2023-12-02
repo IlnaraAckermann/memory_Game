@@ -32,12 +32,14 @@ h2 {
     font-weight: 600;
 }
 
-h2, .reset {
+h2,
+.reset {
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-.reset:focus, .reset:hover {
+.reset:focus,
+.reset:hover {
     color: #d71ae4;
     background-color: #03001e;
 }
@@ -61,7 +63,7 @@ h2, .reset {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    border: #c147ff solid 2px;
 
     transform: rotatey(180deg);
     transition: .25s;
@@ -71,14 +73,35 @@ h2, .reset {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
+
 }
 
-.item::after{
+.item::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: #000;
+
+
+
+
+    background:
+        repeating-linear-gradient(45deg, #0000 calc(-650%/13) calc(50%/13), #4f1686 0 calc(100%/13),
+            #0000 0 calc(150%/13), #4f1686 0 calc(200%/13),
+            #0000 0 calc(250%/13), #4f1686 0 calc(300%/13)), repeating-linear-gradient(45deg, #0000 calc(-650%/13) calc(50%/13), #4f1686 0 calc(100%/13),
+            #0000 0 calc(150%/13), #4f1686 0 calc(200%/13),
+            #0000 0 calc(250%/13), #4f1686 0 calc(300%/13)) 24px 24px,
+        repeating-linear-gradient(-45deg, #0000 calc(-650%/13) calc(50%/13), #4f1686 0 calc(100%/13),
+            #0000 0 calc(150%/13), #4f1686 0 calc(200%/13),
+            #0000 0 calc(250%/13), #4f1686 0 calc(300%/13)), repeating-linear-gradient(-45deg, #0000 calc(-650%/13) calc(50%/13), #4f1686 0 calc(100%/13),
+            #0000 0 calc(150%/13), #4f1686 0 calc(200%/13),
+            #0000 0 calc(250%/13), #4f1686 0 calc(300%/13)) 24px 24px #c147ff;
+    background-size: 48px 48px;
+
+
+
+
+
+
     transform: rotatey(0deg);
     transition: .25s;
     backface-visibility: hidden;
@@ -87,7 +110,7 @@ h2, .reset {
 .item.boxOpen {
     transform: rotateY(0deg);
 }
+
 .item.boxOpen::after {
     transform: rotateY(180deg);
 }
-
