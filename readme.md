@@ -17,3 +17,10 @@ O jogo é desenvolvido usando:
 
 ## Atualizações
 Adicionada verificação para avaliar se a carta já foi encontrada antes. A verificação usa o método `classList.contains()`, retornando um valor booleano indicando se o elemento possui a classe especificada.
+
+Verificação !openCards.includes(this) antes de adicionar o objeto ao array openCards.
+
+## Proposta
+- Criar um contador para um possivel score
+- Criar modos de dificuldade diferente tais como um delay especifico para que a carta vire.
+- Implementar feedback com audio, som de virar carta, de par pareado, par incorreto e end game
