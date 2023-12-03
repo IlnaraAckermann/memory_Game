@@ -23,4 +23,5 @@ Verificação !openCards.includes(this) antes de adicionar o objeto ao array ope
 ## Proposta
 - Criar um contador para um possivel score
 - Criar modos de dificuldade diferente tais como um delay especifico para que a carta vire.
-- Implementar feedback com audio, som de virar carta, de par pareado, par incorreto e end game
+- Criar modelos mais dificeis com mais cartas.
+- ~~Implementar feedback com audio, som de virar carta, de par pareado, par incorreto e end game~~

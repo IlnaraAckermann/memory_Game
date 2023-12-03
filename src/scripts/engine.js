@@ -29,20 +29,28 @@ for (let i = 0; i < cards.length; i++) {
 	box.onclick = handleClick;
 	document.querySelector(".game").appendChild(box);
 }
+
+function playSound(audioName) {
+	let audio = new Audio(`../src/assets/audios/${audioName}`);
+	audio.volume = 0.2;
+	audio.play();
+}
 /**
  * Função responsável pela ações do click na carta, ela valida se a carta selecionada é valida e se as cartas são iguais
  */
 function handleClick() {
-	//todo implementar audio!
 	if (!this.classList.contains("boxMatch")) {
 		if (!openCards.includes(this)) {
 			if (openCards.length < 2) {
+				playSound("flip.mp3")
 				this.classList.add("boxOpen");
 				openCards.push(this);
+				if (openCards.length === 2) {
+					setTimeout(checkMatch, 500);
+				}
 			}
-			if (openCards.length === 2) {
-				setTimeout(checkMatch, 500);
-			}
+		} else {
+			playSound("playernocanselect.mp3")
 		}
 	}
 }
@@ -51,14 +59,18 @@ function handleClick() {
  */
 function checkMatch() {
 	if (openCards[0].innerHTML === openCards[1].innerHTML) {
+		playSound("match.mp3");
 		openCards[0].classList.add("boxMatch");
 		openCards[1].classList.add("boxMatch");
 	} else {
+		playSound("fail.mp3");
 		openCards[0].classList.remove("boxOpen");
 		openCards[1].classList.remove("boxOpen");
 	}
 	openCards = [];
 	if (document.querySelectorAll(".boxMatch").length === cards.length) {
+		setTimeout(300)
+		playSound("win.mp3");
 		alert("Você Venceu!!!");
 	}
 }
