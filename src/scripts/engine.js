@@ -66,11 +66,13 @@ function checkMatch() {
 		playSound("fail.mp3");
 		openCards[0].classList.remove("boxOpen");
 		openCards[1].classList.remove("boxOpen");
+		
 	}
 	openCards = [];
 	if (document.querySelectorAll(".boxMatch").length === cards.length) {
-		setTimeout(300)
 		playSound("win.mp3");
-		alert("Você Venceu!!!");
+		setTimeout(() => {
+			alert(`Você Venceu!!`);
+		}, 500);
 	}
 }
